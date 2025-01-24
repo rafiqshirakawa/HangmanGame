@@ -9,29 +9,24 @@ const figureParts = document.querySelectorAll(".figure-part");
 const letterInput = document.getElementById("letter-input"); // New input field
 
 const words = [
-  "application",
-  "programming",
-  "interface",
-  "wizard",
-  "element",
-  "prototype",
-  "callback",
-  "undefined",
-  "arguments",
-  "settings",
-  "selector",
-  "container",
-  "instance",
-  "response",
-  "console",
-  "constructor",
-  "token",
-  "function",
-  "return",
-  "length",
-  "type",
-  "node",
+  "frozen",
+  "tangled",
+  "zootopia",
+  "toy story",
+  "moana",
+  "pinocchio",
+  "cinderella",
+  "aladdin",
+  "tarzan",
+  "wall-e",
+  "up",
+  "inside out",
+  "finding nemo",
+  "turning red",
+  "luca",
+  "sleeping beauty",
 ];
+
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 
 let playable = true;
@@ -46,7 +41,7 @@ function displayWord() {
       .map(
         (letter) => `
     <span class="letter">
-    ${correctLetters.includes(letter) ? letter : ""}
+    ${letter === " " ? "&nbsp;" : correctLetters.includes(letter) ? letter : ""}
     </span>
     `
       )
