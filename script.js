@@ -4,10 +4,9 @@ const playAgainButton = document.getElementById("play-button");
 const popup = document.getElementById("popup-container");
 const notification = document.getElementById("notification-container");
 const finalMessage = document.getElementById("final-message");
-const finalMessageRevealWord = document.getElementById(
-  "final-message-reveal-word"
-);
+const finalMessageRevealWord = document.getElementById("final-message-reveal-word");
 const figureParts = document.querySelectorAll(".figure-part");
+const letterInput = document.getElementById("letter-input"); // New input field
 
 const words = [
   "application",
@@ -65,7 +64,7 @@ function displayWord() {
 function updateWrongLettersElement() {
   wrongLettersElement.innerHTML = `
   ${wrongLetters.length > 0 ? "<p>Wrong</p>" : ""}
-  ${wrongLetters.map((letter) => `<span>${letter}</span>`)}
+  ${wrongLetters.map((letter) => `<span>${letter}</span>`).join(", ")}
   `;
   figureParts.forEach((part, index) => {
     const errors = wrongLetters.length;
@@ -88,9 +87,10 @@ function showNotification() {
   }, 2000);
 }
 
-window.addEventListener("keypress", (e) => {
+// New event listener for the input field
+letterInput.addEventListener("input", (e) => {
   if (playable) {
-    const letter = e.key.toLowerCase();
+    const letter = e.target.value.toLowerCase();
     if (letter >= "a" && letter <= "z") {
       if (selectedWord.includes(letter)) {
         if (!correctLetters.includes(letter)) {
@@ -108,6 +108,8 @@ window.addEventListener("keypress", (e) => {
         }
       }
     }
+    // Clear the input field after processing
+    e.target.value = "";
   }
 });
 
