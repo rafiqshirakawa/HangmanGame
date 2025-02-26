@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
-
+/* General Styles */
 :root {
   --primary-color: #1f2f61;
   --secondary-color: #224ca4;
@@ -18,7 +18,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Full height */
+  height: 100vh;
   overflow: hidden;
   margin: 0;
 }
@@ -27,7 +27,7 @@ h1 {
   margin: 20px 0 0;
   letter-spacing: 0.5rem;
   text-transform: uppercase;
-  font-size: 2rem; /* Responsive font size */
+  font-size: 2.5rem; /* Larger font size for laptops */
 }
 
 h2,
@@ -35,29 +35,38 @@ h3 {
   letter-spacing: 0.2rem;
 }
 
+audio {
+  display: none; /* Hide audio elements */
+}
+
+/* Game Container */
 .game-container {
   padding: 20px 30px;
   position: relative;
   margin: auto;
-  height: auto; /* Flexible height */
-  width: 90%; /* Responsive width */
-  max-width: 450px; /* Max width for larger screens */
+  height: auto;
+  width: 70%; /* Wider container for laptops */
+  max-width: 800px; /* Max width for larger screens */
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center align items */
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Hangman Figure */
 .figure-container {
   fill: transparent;
   stroke: var(--light-color);
   stroke-width: 4px;
   stroke-linecap: round;
+  width: 300px; /* Larger figure for laptops */
+  height: 300px;
 }
 
 .figure-part {
   display: none;
 }
 
+/* Wrong Letters Container */
 .wrong-letters-container {
   position: absolute;
   top: 20px;
@@ -72,16 +81,17 @@ h3 {
 }
 
 .wrong-letters-container span {
-  font-size: 1.5rem; /* Responsive font size */
+  font-size: 1.8rem; /* Larger font size for wrong letters */
 }
 
+/* Word Display */
 .word {
   display: flex;
   position: absolute;
-  bottom: 60px; /* Adjusted to make space for input */
+  bottom: 100px; /* Adjusted for better spacing */
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2rem; /* Responsive font size */
+  font-size: 2.5rem; /* Larger font size for word display */
 }
 
 .letter {
@@ -89,11 +99,12 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0 3px;
-  height: 50px;
-  width: 20px;
+  margin: 0 5px; /* Slightly more spacing between letters */
+  height: 60px; /* Taller letters */
+  width: 30px; /* Wider letters */
 }
 
+/* Popup Container */
 .popup-container {
   background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
@@ -110,7 +121,7 @@ h3 {
   background-color: var(--secondary-color);
   border-radius: 5px;
   box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 30px; /* More padding for larger screens */
   text-align: center;
 }
 
@@ -120,8 +131,8 @@ h3 {
   color: var(--secondary-color);
   border: 0;
   margin-top: 20px;
-  padding: 12px 20px;
-  font-size: 1rem; /* Responsive font size */
+  padding: 15px 25px; /* Larger button for laptops */
+  font-size: 1.2rem; /* Larger font size for button text */
   font-family: inherit;
   border-radius: 5px;
 }
@@ -134,6 +145,7 @@ h3 {
   outline: none;
 }
 
+/* Notification Container */
 .notification-container {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 10px 10px 0 0;
@@ -151,45 +163,89 @@ h3 {
   margin: 0;
 }
 
-/* Input field styling */
+/* Input Field Styling */
 input[type="text"] {
   width: 100%;
-  padding: 10px;
-  margin-top: 20px; /* Space above the input */
-  font-size: 1.5rem; /* Responsive font size */
+  padding: 12px;
+  margin-top: 30px; /* More space above the input */
+  font-size: 1.8rem; /* Larger font size for input */
   border: 1px solid #ccc;
   border-radius: 5px;
-  outline: none; /* Remove outline on focus */
+  outline: none;
 }
 
 input[type="text"]:focus {
-  border-color: var(--secondary-color); /* Change border color on focus */
+  border-color: var(--secondary-color);
 }
 
-/* Media Queries for responsiveness */
-@media (max-width: 600px) {
+/* Media Queries for Laptops */
+@media (min-width: 768px) {
   h1 {
-    font-size: 1.5rem; /* Smaller font size for headings */
+    font-size: 3rem; /* Even larger heading for laptops */
   }
 
   .word {
-    font-size: 1.5rem; /* Smaller font size for the word display */
+    font-size: 3rem; /* Larger word display */
   }
 
   .letter {
-    height: 40px; /* Adjust letter height for smaller screens */
-    width: 15px; /* Adjust letter width for smaller screens */
+    height: 70px; /* Taller letters */
+    width: 40px; /* Wider letters */
   }
 
   input[type="text"] {
-    font-size: 1.2rem; /* Smaller font size for input */
+    font-size: 2rem; /* Larger input font size */
   }
 
   .wrong-letters-container span {
-    font-size: 1.2rem; /* Smaller font size for wrong letters */
+    font-size: 2rem; /* Larger wrong letters */
   }
 
   .popup button {
-    font-size: 0.9rem; /* Smaller font size for buttons */
+    font-size: 1.5rem; /* Larger button text */
+  }
+
+  #reset-button {
+    cursor: pointer;
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+    border: 0;
+    margin-top: 10px; /* Space between buttons */
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-family: inherit;
+    border-radius: 5px;
+  }
+  
+  #reset-button:active {
+    transform: scale(0.98);
+  }
+  
+  #reset-button:focus {
+    outline: none;
+  }
+
+  #retry-button {
+    cursor: pointer;
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+    border: 0;
+    margin-top: 20px; /* Space above the button */
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-family: inherit;
+    border-radius: 5px;
+  }
+  
+  #retry-button:active {
+    transform: scale(0.98);
+  }
+  
+  #retry-button:focus {
+    outline: none;
+  }
+
+  #reset-button.hidden {
+    display: none;
   }
 }
